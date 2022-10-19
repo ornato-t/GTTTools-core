@@ -2,7 +2,7 @@
   "name": "gtttools",
   "version": "1.0.0",
   "description": "A new, decent and possibly working public transport tracker for the city of Turin, Italy.",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,5 +26,9 @@
   "homepage": "https://github.com/ornato-t/GTTTools#readme",
   "dependencies": {
     "puppeteer": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.3",
+    "typescript": "^4.8.4"
   }
 }
