@@ -22,6 +22,7 @@ interface vehicle {
   updated: Date,
 };
 
+//Fetch all info regarding a vehicle (from line id)
 export async function pollVehicles(line: string) {
   const options = { //Request params
     method: 'GET',

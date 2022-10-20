@@ -23,6 +23,7 @@ interface passage {
   programmed: Date[]
 }
 
+//Fetch all info regarding departing vehicles from a station (by number)
 export async function pollStations(station: number) {
   const options = { //Request params
     method: 'GET',
