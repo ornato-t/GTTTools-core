@@ -1,15 +1,25 @@
 import axios from 'axios';
 
-//Represents a vehicle: either a bus or a tram
-interface vehicle {
+//Represents a vehicle: either a bus or a tram. As provided by the GTT site
+interface vehicleWeb {
   id: number,
   tipo: string,
   disabili: boolean,
   lat: number,
   lon: number,
   direzione: number,
-  aggiornamento: string,  //TODO: turn into Date
+  aggiornamento: string,
   occupazione: number
+};
+
+//Represents a vehicle: either a bus or a tram. Prettified for use in app
+interface vehicle {
+  id: number,
+  vehicleType: string,
+  lat: number,
+  lon: number,
+  direction: number,
+  updated: Date,
 };
 
 export async function pollVehicles(line: string) {
@@ -24,9 +34,34 @@ export async function pollVehicles(line: string) {
 
   try {
     const response = await axios.request(options);
-    const vehicles:vehicle[] = response.data;
+    const vehiclesWeb:vehicleWeb[] = response.data;
+    const vehicles: vehicle[] = vehiclesWeb.map(vehicle => ({
+      id: vehicle.id,
+      vehicleType: vehicleName(vehicle.tipo),
+      lat: vehicle.lat,
+      lon: vehicle.lon,
+      direction: vehicle.direzione,
+      updated: updatedDate(vehicle.aggiornamento)
+    }))
     return vehicles;
   } catch (err) {
     throw err;
   }
+}
+
+//Returns the full word "Bus" or "Tram"
+function vehicleName(initial: string){
+  if(initial === 'B') return 'Bus';
+  if(initial === 'T') return 'Tram';
+  return initial;
+}
+
+//Converts a date string in the format "DD/MM/YYYY HH:mm" to a date object
+function updatedDate(dateStr: string){
+  dateStr = dateStr.replace(' ', '-');
+  dateStr = dateStr.replace(':', '-');
+  dateStr = dateStr.replaceAll('/', '-');
+  const dateFields = dateStr.split('-');
+  const dateStrReconstructed = `${dateFields[2]}-${dateFields[1]}-${dateFields[0]}T${dateFields[3]}:${dateFields[4]}`;
+  return new Date(dateStrReconstructed);
 }

@@ -17,6 +17,7 @@ interface passageWeb {
 //Represents a vehicle stopping by a station. Prettified for use in app
 interface passage {
   line: string,
+  lineID: string,
   direction: string,
   realTime: Date[],
   programmed: Date[]
@@ -40,6 +41,7 @@ export async function pollStations(station: number) {
     const passagesWeb: passageWeb[] = response.data;
     const passages: passage[] = passagesWeb.map(pass => ({
       line: parseBusN(pass.LineaAlias),
+      lineID: pass.Linea,
       direction: pass.Direzione,
       realTime: pass.PassaggiRT.map(hour => dateFromHourStr(hour)),
       programmed: pass.PassaggiPR.map(hour => dateFromHourStr(hour))
@@ -51,7 +53,7 @@ export async function pollStations(station: number) {
   }
 }
 
-//Returns a date object from a string formatted as HH:MM
+//Returns a date object from a string formatted as HH:mm
 function dateFromHourStr(str: string) {
   const d = new Date();
   const dateStr = d.toISOString();
