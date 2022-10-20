@@ -1,18 +1,18 @@
-import axios from "axios";
+import axios from 'axios';
 
 //Represents a vehicle: either a bus or a tram
-export interface vehicle {
+interface vehicle {
   id: number,
   tipo: string,
   disabili: boolean,
   lat: number,
   lon: number,
   direzione: number,
-  aggiornamento: string,
+  aggiornamento: string,  //TODO: turn into Date
   occupazione: number
 };
 
-export async function pollTracker(line: string) {
+export async function pollVehicles(line: string) {
   const options = { //Request params
     method: 'GET',
     url: 'https://www.gtt.to.it/cms/components/com_gtt/views/percorsi/tmpl/proxydaslinea.php',

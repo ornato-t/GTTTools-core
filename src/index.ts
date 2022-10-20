@@ -1,8 +1,13 @@
-import { pollTracker, vehicle } from "./pollTracker.js";
+import { pollVehicles } from "./vehicles.js";
+import { pollStations } from "./stations.js";
 
-const line = '10N';
-const res: vehicle[] = await pollTracker(line);
+const bus = await pollVehicles('10');
+const stat = await pollStations(28);
 
-res.forEach(el => {
-    console.log(el.id)
-})
+bus.forEach(el => {
+    console.log(el)
+});
+
+stat.forEach(el => {
+    console.log(el)
+});
