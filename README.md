@@ -2,7 +2,7 @@
 A new, decent and possibly working public transport tracker for the city of Turin, Italy.
 
 # Core
-This is the core package of the GTTTools application, a middleware meant for local or server side hosting, which provides a simplified interface for polling the GTT live public transportation API.
+This is the core package of the GTTTools application, a middleware meant for local or server side use, which provides a simplified interface for interacting with the GTT live public transportation API.
 
 # The API
 GTTTools-core fetches its data from the same endpoint used by the [GTT live tracker](https://www.gtt.to.it/cms/en/percorari/urbano) and many other services.  
@@ -10,7 +10,7 @@ Here's why you should use GTTTools-core instead of different solutions:
 * **GTTTools-core is entirely available in English**, unlike the original data, which is partially written in Italian for seemingly no reason.
 * **Requests made easy**. Just worry about your app's logic, GTTTools-core will handle HTTP requests, headers and parameters for you.
 * **Simplified polling**. Enter your preferred polling interval to enjoy the fastest data available.
-* **Easily accessible data**. GTTTools removes redundant data and improves typings on the response objects.
+* **Easily accessible data**. GTTTools-core removes redundant data and improves typings on the response objects.
 
 # Getting started
 Download from [npm](https://www.npmjs.com/package/gtttools) using `npm i gtttools`.
