@@ -15,7 +15,9 @@
 
     "allowJs": false,
     "rootDir": "./src",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationDir": "./types"
   }
   
 }
