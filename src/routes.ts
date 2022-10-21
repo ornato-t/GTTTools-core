@@ -13,7 +13,7 @@ interface vehicleWeb {
 };
 
 //Represents a vehicle: either a bus or a tram. Prettified for use in app
-interface vehicle {
+export interface vehicle {
   id: number,
   vehicleType: string,
   lat: number,
@@ -22,14 +22,14 @@ interface vehicle {
   updated: Date,
 };
 
-//Fetch all info regarding a vehicle (from line id)
-export async function pollVehicles(line: string) {
+//Fetch all info regarding a vehicle (from route id)
+export async function pollRoute(route: string) {
   const options = { //Request params
     method: 'GET',
     url: 'https://www.gtt.to.it/cms/components/com_gtt/views/percorsi/tmpl/proxydaslinea.php',
-    params: { 'serviceName': 'GetVeicoliPerLineaJson', 'linea': line },
+    params: { 'serviceName': 'GetVeicoliPerLineaJson', 'linea': route },
     headers: {
-      Referer: `https://www.gtt.to.it/cms/percorari/urbano?view=percorsi&bacino=U&linea=${line}&Regol=GE`
+      Referer: `https://www.gtt.to.it/cms/percorari/urbano?view=percorsi&bacino=U&linea=${route}&Regol=GE`
     }
   };
 

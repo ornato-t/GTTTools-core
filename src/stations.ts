@@ -15,7 +15,7 @@ interface passageWeb {
 };
 
 //Represents a vehicle stopping by a station. Prettified for use in app
-interface passage {
+export interface passage {
   line: string,
   lineID: string,
   direction: string,
