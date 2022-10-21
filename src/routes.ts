@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 //Represents a vehicle: either a bus or a tram. As provided by the GTT site
 interface vehicleWeb {
   id: number,
@@ -24,18 +22,18 @@ export interface vehicle {
 
 //Fetch all info regarding a vehicle (from route id)
 export async function pollRoute(route: string) {
-  const options = { //Request params
+  const url = `https://www.gtt.to.it/cms/components/com_gtt/views/percorsi/tmpl/proxydaslinea.php?serviceName=GetVeicoliPerLineaJson&linea=${route}`;
+  const options = {
     method: 'GET',
-    url: 'https://www.gtt.to.it/cms/components/com_gtt/views/percorsi/tmpl/proxydaslinea.php',
-    params: { 'serviceName': 'GetVeicoliPerLineaJson', 'linea': route },
     headers: {
       Referer: `https://www.gtt.to.it/cms/percorari/urbano?view=percorsi&bacino=U&linea=${route}&Regol=GE`
     }
   };
-
+  
   try {
-    const response = await axios.request(options);
-    const vehiclesWeb:vehicleWeb[] = response.data;
+    const response = await fetch(url, options);
+    const vehiclesWeb:vehicleWeb[] = await response.json();
+    console.log(vehiclesWeb);
     const vehicles: vehicle[] = vehiclesWeb.map(vehicle => ({
       id: vehicle.id,
       vehicleType: vehicleName(vehicle.tipo),

@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 //Represents a vehicle stopping by a station. As provided by the GTT site
 interface passageWeb {
   Linea: string,
@@ -25,21 +23,16 @@ export interface passage {
 
 //Fetch all info regarding departing vehicles from a station (by number)
 export async function pollStations(station: number) {
-  const options = { //Request params
-    method: 'GET',
-    url: 'https://www.gtt.to.it/cms/index.php',
-    params: {
-      option: 'com_gtt',
-      task: 'palina.getTransitiOld',
-      palina: station,
-      realtime: 'true',
-      get_param: 'value'
-    }
+  const url = `https://www.gtt.to.it/cms/index.php?option=com_gtt&task=palina.getTransitiOld&palina=${station}&realtime=true&get_param=value`;
+  const options = {
+    method: 'GET'
   };
 
   try {
-    const response = await axios.request(options);
-    const passagesWeb: passageWeb[] = response.data;
+    const response = await fetch(url, options);
+    const passagesWeb: passageWeb[] = await response.json();
+    console.log(passagesWeb);
+
     const passages: passage[] = passagesWeb.map(pass => ({
       line: parseBusN(pass.LineaAlias),
       lineID: pass.Linea,
