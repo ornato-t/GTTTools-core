@@ -10,7 +10,7 @@ export class Vehicle extends EventEmitter {
     //Polls the GTT API every INTERVAL number of milliseconds, for the given LINE
     async poll(line: string, interval: number) {
         vehcilesLoop = true;
-        while (stationsLoop) {
+        while (vehcilesLoop) {
             await waitFor(interval);
             this.emit('refresh', await pollVehicles(line));
         }
