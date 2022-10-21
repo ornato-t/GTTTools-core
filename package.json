@@ -1,6 +1,6 @@
 {
   "name": "gtttools",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A new, decent and possibly working public transport tracker for the city of Turin, Italy.",
   "main": "./dist/index.js",
   "scripts": {
@@ -15,8 +15,7 @@
     "turin",
     "bus",
     "tram",
-    "public",
-    "transport"
+    "public_transport"
   ],
   "author": "ornato_t",
   "license": "GPL-3.0-or-later",
