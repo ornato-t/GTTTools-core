@@ -33,7 +33,7 @@ export async function pollRoute(route: string) {
   try {
     const response = await fetch(url, options);
     const vehiclesWeb:vehicleWeb[] = await response.json();
-    console.log(vehiclesWeb);
+
     const vehicles: vehicle[] = vehiclesWeb.map(vehicle => ({
       id: vehicle.id,
       vehicleType: vehicleName(vehicle.tipo),

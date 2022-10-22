@@ -13,7 +13,7 @@ export class Route extends EventEmitter {
         while (routesLoop) {
             await waitFor(interval);
             const data = await pollRoute(route)
-            this.emit('refresh', data);
+            this.emit('refresh', data, route);
         }
     }
 
@@ -32,7 +32,8 @@ export class Station extends EventEmitter {
         stationsLoop = true;
         while (stationsLoop) {
             await waitFor(interval);
-            this.emit('refresh', await pollStations(station));
+            const data = await pollStations(station)
+            this.emit('refresh', data, station);
         }
     }
 

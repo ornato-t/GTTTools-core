@@ -31,7 +31,6 @@ export async function pollStations(station: number) {
   try {
     const response = await fetch(url, options);
     const passagesWeb: passageWeb[] = await response.json();
-    console.log(passagesWeb);
 
     const passages: passage[] = passagesWeb.map(pass => ({
       line: parseBusN(pass.LineaAlias),

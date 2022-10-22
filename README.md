@@ -19,18 +19,21 @@ Download from [npm](https://www.npmjs.com/package/gtttools) using `npm i gtttool
 GTTTools-core provides two classes: `Station` and `Route`. 
 ## Station
 The `Station` class represents a bus or tram stop. Each station is assigned a number, which the `Station.poll(...)` method takes as a parameter. 
+
 ```js
 import { Station } from 'GTTTools'
 
 const myStation = new Station();
 
 myStation.poll(40, 1000);   //Poll station 40 (Porta Nuova) every 1000 milliseconds
-myStation.on('refresh', passageData => {
+myStation.on('refresh', (passageData, station) => {
+    console.log(`Data on station ${station}`)
     /*  Your code here  */
     console.log(passageData);
 });
 
 myStation.stop();  //Stop the polling 
+
 ```
 This returns an array of lines, stating the programmed and real time arrival date of the bus or tram. The `lineID` property may be used as a parameter for the `Route` class.
 ```js
@@ -51,6 +54,7 @@ This returns an array of lines, stating the programmed and real time arrival dat
   }
 ]
 ```
+
 *Note: this endpoint takes several seconds to load because of a slow endpoint on the GTT API.*
 
 ## Route
@@ -61,16 +65,19 @@ import { Route } from 'GTTTools'
 const myRoute = new Route();
 
 myRoute.poll('4', 1000);  //Poll route 4 every 1000 milliseconds
-myRoute.on('refresh', vehicleData => {    
+myRoute.on('refresh', (vehicleData, route) => {    
+    console.log(`Data on route ${route}`)
     /*  Your code here  */
     console.log(vehicleData);
 });
 
 myVehicle.stop();  //Stop the polling
 ```
+
 *Note: despite often being a number, the route code is a string because it can sometimes include letters inside of it. Examples of this are: 9N, 72B and M1S.*
 
 This returns an array of vehicles, stating the latest available coordinates of the bus or tram. The `id` property may be used to identify the bus or tram model.
+
 ```js
 [
   {
