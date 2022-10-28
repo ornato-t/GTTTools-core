@@ -1,6 +1,6 @@
 {
   "name": "gtttools",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A new, decent and possibly working public transport tracker for the city of Turin, Italy.",
   "main": "./dist/index.js",
   "scripts": {
@@ -8,11 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ornato-t/GTTTools.git"
+    "url": "git+https://github.com/ornato-t/GTTTools-core.git"
   },
   "keywords": [
     "gtt",
     "turin",
+    "torino",
     "bus",
     "tram",
     "public_transport"
@@ -20,9 +21,9 @@
   "author": "ornato_t",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/ornato-t/GTTTools/issues"
+    "url": "https://github.com/ornato-t/GTTTools-core/issues"
   },
-  "homepage": "https://github.com/ornato-t/GTTTools#readme",
+  "homepage": "https://github.com/ornato-t/GTTTools-core#readme",
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
     "@types/node": "^18.11.2",

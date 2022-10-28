@@ -1,8 +1,8 @@
 # GTTTools-core
-A new, decent and possibly working public transport tracker for the city of Turin, Italy.
+A new, decent and possibly working public transport API wrapper for the city of Turin, Italy.
 
 # Core
-This is the core package of the GTTTools application, a middleware meant for local or server side use, which provides a simplified interface for interacting with the GTT live public transportation API.
+This is the core package of the GTTTools application, an API wrapper and middleware meant for local, browser or server side use, which provides a simplified interface for interacting with the GTT live public transportation API.
 
 # The API
 GTTTools-core fetches its data from the same endpoint used by the [GTT live tracker](https://www.gtt.to.it/cms/en/percorari/urbano) and many other services.  
