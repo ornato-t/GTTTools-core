@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 
 import { pollRoute, vehicle } from "./routes.js";
-import { pollStations, passage } from "./stations.js";
+import { pollStop, passage } from "./stops.js";
 
 const waitFor = (delay: number) => new Promise(resolve => setTimeout(resolve, delay));   //Promise based setTimeout wrapper [ms]
 
@@ -23,22 +23,22 @@ export class Route extends EventEmitter {
     }
 }
 
-let stationsLoop: boolean;
-export class Station extends EventEmitter {
+let stopsLoop: boolean;
+export class Stop extends EventEmitter {
     constructor() { super() }
 
-    //Polls the GTT API every INTERVAL number of milliseconds, for the given STATION
-    async poll(station: number, interval: number) {
-        stationsLoop = true;
-        while (stationsLoop) {
+    //Polls the GTT API every INTERVAL number of milliseconds, for the given STOP
+    async poll(stop: number, interval: number) {
+        stopsLoop = true;
+        while (stopsLoop) {
             await waitFor(interval);
-            const data = await pollStations(station)
-            this.emit('refresh', data, station);
+            const data = await pollStop(stop)
+            this.emit('refresh', data, stop);
         }
     }
 
     //Stops the poll
     stop() {
-        stationsLoop = false;
+        stopsLoop = false;
     }
 }

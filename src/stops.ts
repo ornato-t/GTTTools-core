@@ -1,4 +1,4 @@
-//Represents a vehicle stopping by a station. As provided by the GTT site
+//Represents a vehicle stopping by a stop. As provided by the GTT site
 interface passageWeb {
   Linea: string,
   LineaAlias: string,
@@ -12,7 +12,7 @@ interface passageWeb {
   PassaggiPR: string[]
 };
 
-//Represents a vehicle stopping by a station. Prettified for use in app
+//Represents a vehicle stopping by a stop. Prettified for use in app
 export interface passage {
   line: string,
   lineID: string,
@@ -21,9 +21,9 @@ export interface passage {
   programmed: Date[]
 }
 
-//Fetch all info regarding departing vehicles from a station (by number)
-export async function pollStations(station: number) {
-  const url = `https://www.gtt.to.it/cms/index.php?option=com_gtt&task=palina.getTransitiOld&palina=${station}&realtime=true&get_param=value`;
+//Fetch all info regarding departing vehicles from a stop (by number)
+export async function pollStop(stop: number) {
+  const url = `https://www.gtt.to.it/cms/index.php?option=com_gtt&task=palina.getTransitiOld&palina=${stop}&realtime=true&get_param=value`;
   const options = {
     method: 'GET'
   };

@@ -1,16 +1,16 @@
-import { Station } from './dist/index.js'
+import { Stop } from './dist/index.js'
 import { Route } from './dist/index.js'
 
-const myStation = new Station();
+const myStop = new Stop();
 
-myStation.poll(40, 1000);   //Poll station 28 (Porta Nuova) every 1000 milliseconds
-myStation.on('refresh', (passageData, station) => {    //Every 1000 milliseconds a "refresh" emitter is raised. Whever that happens, execute the callback
-    console.log(`Data on station ${station}`)
+myStop.poll(40, 1000);   //Poll stop 28 (Porta Nuova) every 1000 milliseconds
+myStop.on('refresh', (passageData, stop) => {    //Every 1000 milliseconds a "refresh" emitter is raised. Whever that happens, execute the callback
+    console.log(`Data on stop ${stop}`)
     console.log(passageData);
     /*  Your code here  */
 });
 
-myStation.stop();  //Stop the polling
+myStop.stop();  //Stop the polling
 
 
 

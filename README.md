@@ -16,23 +16,23 @@ Here's why you should use GTTTools-core instead of different solutions:
 Download from [npm](https://www.npmjs.com/package/gtttools) using `npm i gtttools`.
 
 # Usage examples
-GTTTools-core provides two classes: `Station` and `Route`. 
-## Station
-The `Station` class represents a bus or tram stop. Each station is assigned a number, which the `Station.poll(...)` method takes as a parameter. 
+GTTTools-core provides two classes: `Stop` and `Route`. 
+## Stop
+The `Stop` class represents a bus or tram stop. Each stop is assigned a number, which the `Stop.poll(...)` method takes as a parameter. 
 
 ```js
-import { Station } from 'GTTTools'
+import { Stop } from 'GTTTools'
 
-const myStation = new Station();
+const myStop = new Stop();
 
-myStation.poll(40, 1000);   //Poll station 40 (Porta Nuova) every 1000 milliseconds
-myStation.on('refresh', (passageData, station) => {
-    console.log(`Data on station ${station}`)
+myStop.poll(40, 1000);   //Poll stop 40 (Porta Nuova) every 1000 milliseconds
+myStop.on('refresh', (passageData, stop) => {
+    console.log(`Data on stop ${stop}`)
     /*  Your code here  */
     console.log(passageData);
 });
 
-myStation.stop();  //Stop the polling 
+myStop.stop();  //Stop the polling 
 
 ```
 This returns an array of lines, stating the programmed and real time arrival date of the bus or tram. The `lineID` property may be used as a parameter for the `Route` class.
@@ -102,7 +102,7 @@ This returns an array of vehicles, stating the latest available coordinates of t
 # TypeScript
 GTTTools-core is compatible with both JavaScript and TypeScript. TypeScript users may use the following interfaces to interact with the middleware:
 
-`Station` class:
+`Stop` class:
 ```ts
 interface passage {
   line: string,
