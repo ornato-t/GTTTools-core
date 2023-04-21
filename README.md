@@ -2,7 +2,7 @@
 A new, decent and possibly working public transport API wrapper for the city of Turin, Italy.
 
 # Core
-This is the core package of the GTTTools application, an API wrapper and middleware meant for local, browser or server side use, which provides a simplified interface for interacting with the GTT live public transportation API.
+This is the core package of the [GTTTools](https://github.com/ornato-t/gtttools) application, an API wrapper and middleware meant for local or server side use, which provides a simplified interface for interacting with the GTT live public transportation API.
 
 # The API
 GTTTools-core fetches its data from the same endpoint used by the [GTT live tracker](https://www.gtt.to.it/cms/en/percorari/urbano) and many other services.  
@@ -100,7 +100,7 @@ This returns an array of vehicles, stating the latest available coordinates of t
 ```
 
 # TypeScript
-GTTTools-core is compatible with both JavaScript and TypeScript. TypeScript users may use the following interfaces to interact with the middleware:
+GTTTools-core is compatible with TypeScript. The module exports the the following TypeScript interfaces, useful to interact with the middleware:
 
 `Stop` class:
 ```ts
